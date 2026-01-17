@@ -17,6 +17,19 @@ enum class Key {
     Unknown
 };
 
+
+inline void clearScreen() {
+    std::cout << "\033[2J\033[1;1H" << std::flush;
+}
+
+inline void hideCursor() {
+    write(STDIN_FILENO, "\x1b[?25l", 6);
+}
+
+inline void showCursor() {
+    write(STDIN_FILENO, "\x1b[?25h", 6);
+}
+
 class RawMode {
     public:
     RawMode() {
@@ -29,9 +42,10 @@ class RawMode {
     }
     ~RawMode() {
         tcsetattr(STDIN_FILENO, TCIOFLUSH, &orig_);
+        showCursor();
     }
 
-    // Das Objekt soll single bleiben, wie ich :D
+    // Das Objekt soll single bleiben, wie ich :,)
     RawMode(const RawMode&) = delete;
     RawMode& operator=(const RawMode&) = delete;
 
@@ -64,10 +78,6 @@ inline KeyResult readKey() {
         case 'D': return {Key::ArrowLeft, 0};
         default: return {Key::Unknown, 0};
     }
-}
-
-inline void clearScreen() {
-    std::cout << "\033[2J\033[1;1H" << std::flush;
 }
 
 #endif //TERMINALMENU_TERMINAL_H

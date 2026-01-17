@@ -66,5 +66,4 @@ void Menu::printMenu() {
             std::cout << "  " << menuItemsPtr->at(i) << std::endl;
         }
     }
-    std::cout << menuIndex <<std::endl;
 }

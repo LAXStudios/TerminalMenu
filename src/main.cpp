@@ -16,7 +16,7 @@ int main() {
 
     RawMode rawMode{};
 
-    std::vector<std::string> mainMenuItems = {"Add File", "Edit File", "List all Files", "Settings", "Exit"};
+    std::vector<std::string> mainMenuItems = {"Option 1", "Option 2", "Option 3", "Settings", "Exit"};
     Menu menu(mainMenuItems);
     const std::string selected= menu.MenuRun();
 

@@ -4,7 +4,7 @@
 
 #include "menu.h"
 
-Menu::Menu(std::vector<std::string> &menuItems, int startMenuIndex) {
+Menu::Menu(std::vector<std::string> &menuItems, const int startMenuIndex) {
     menuItemsPtr = &menuItems;
     menuIndex = startMenuIndex;
 }
@@ -34,7 +34,7 @@ std::string Menu::MenuRun() {
                 increaseMenuIndex();
                 break;
             default:
-
+                // Nothing
                 break;
         }
         clearScreen();
@@ -59,7 +59,7 @@ void Menu::decreaseMenuIndex() {
     }
 }
 
-void Menu::printMenu() {
+void Menu::printMenu() const {
     for (int i = 0; i < menuItemsPtr->size(); i++) {
         if (i == menuIndex) {
             std::cout << "> " << menuItemsPtr->at(i) << std::endl;

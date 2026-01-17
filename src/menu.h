@@ -20,7 +20,7 @@ private:
     int menuIndex = 0;
     std::vector<std::string> *menuItemsPtr;
 
-    void printMenu();
+    void printMenu() const;
     void increaseMenuIndex();
     void decreaseMenuIndex();
 };

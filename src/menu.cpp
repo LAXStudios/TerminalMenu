@@ -19,7 +19,7 @@ std::string Menu::MenuRun() {
 
         if (keyResult.character == 'q') {
             isMenu = false;
-            break;
+            return std::string{};
         }
 
         if (keyResult.character == '\n') {
@@ -40,6 +40,7 @@ std::string Menu::MenuRun() {
         clearScreen();
         printMenu();
     }
+    return std::string{};
 }
 
 void Menu::increaseMenuIndex() {
